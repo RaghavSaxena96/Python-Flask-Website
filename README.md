@@ -6,6 +6,7 @@ create your own routes or links in routes.py and enjoy.......
 
 And this is much easier than Django which include a lot of changes in views.py and url.py everytime
 
+Install the dependencies giving in the requirements.txt by using pip
 
 Run by typing on terminal or command prompt
 
