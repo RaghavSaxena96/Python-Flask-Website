@@ -54,7 +54,16 @@ def upload_file():
 
 #--------------------------------------------------------------------------------------------------------------
 
+
+
 @app.route("/")
+@app.route("/home")
+@login_required
+def home():
+    return render_template('home.html',title='Home')
+
+
+    
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -72,10 +81,6 @@ def login():
 
 
 
-@app.route("/home")
-@login_required
-def home():
-    return render_template('home.html',title='Home')
 
 
 @app.route("/about")
@@ -166,7 +171,7 @@ def returnuser():
     #print(current_user.username)
     #print(current_user.email)
     call(["python","gymmate/userid.py"])
-    return redirect("http://127.0.0.1:33/", code=302)
+    return redirect("http://127.0.0.1:5000/", code=302)
 
 
 @app.route("/client")
@@ -190,7 +195,7 @@ def client():
     except:
         print("Exception ")
     
-    return redirect("http://127.0.0.1:33/sending", code=302)
+    return redirect("http://127.0.0.1:5000/sending", code=302)
 
 
 
@@ -208,4 +213,4 @@ def server():
     except:
         print("An exception occured")
 
-    return redirect("http://127.0.0.1:33/", code=302)
+    return redirect("http://127.0.0.1:5000/", code=302)
