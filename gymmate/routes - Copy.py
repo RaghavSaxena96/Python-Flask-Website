@@ -21,7 +21,7 @@ import time
 #------------------------------------------File Upload Code-------------------------------------------
 
 
-ALLOWED_EXTENSIONS = set(['mp4'])
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','mp4'])
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -49,7 +49,7 @@ def upload_file():
             flash('File successfully uploaded')
             return redirect('/')
         else:
-            flash('Allowed file types is mp4')
+            flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif, mp4')
             return redirect(request.url)
 
 #--------------------------------------------------------------------------------------------------------------
@@ -153,7 +153,7 @@ def account():
 @login_required
 
 def display():
-    return redirect('static/output.mp4')
+    return redirect('static/output.avi')
 
 
 #-----------------------Python Code-------------------------------------------# 
@@ -166,13 +166,12 @@ def returnuser():
     #print(current_user.username)
     #print(current_user.email)
     call(["python","gymmate/userid.py"])
-    return redirect("http://127.0.0.1:33/", code=302)
+    return redirect("http://192.168.43.186:33/", code=302)
 
 
 @app.route("/client")
 @login_required
 def client():
-    
     try:
         cap = cv2.VideoCapture(1)
         clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -190,7 +189,7 @@ def client():
     except:
         print("Exception ")
     
-    return redirect("http://127.0.0.1:33/sending", code=302)
+    return redirect("http://192.168.43.186:33/sending", code=302)
 
 
 
@@ -208,4 +207,4 @@ def server():
     except:
         print("An exception occured")
 
-    return redirect("http://127.0.0.1:33/", code=302)
+    return redirect("http://192.168.43.186:33/", code=302)
