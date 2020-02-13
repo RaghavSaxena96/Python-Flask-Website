@@ -8,7 +8,7 @@ And this is much easier than Django which include a lot of changes in views.py a
 
 Install the dependencies giving in the requirements.txt by using 
 --
-pip install -r requirement.txt
+pip install -r requirements.txt
 --
 Run the project using 
 
